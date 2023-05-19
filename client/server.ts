@@ -1,3 +1,3 @@
-export const server = "http://localhost:9000/api/v2";
+export const server = "https://skin-care-d7f5.onrender.com/api/v2";
 
-export const backend_url = "http://localhost:9000/";
+export const backend_url = "https://skin-care-d7f5.onrender.com/";
