@@ -5,24 +5,27 @@ const bodyParser = require("body-parser");
 const ErrorHandler = require("./middleware/error");
 const path = require("path");
 const cors = require("cors");
-app.use(cors({
-  origin: 'https://skincare-chi.vercel.app',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://skincare-chi.vercel.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-app.use("/", express.static(path.join(__dirname,"./uploads")));
+app.use("/", express.static(path.join(__dirname, "./uploads")));
 app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({
-      path: "config/.env",
-    });
+  require("dotenv").config({
+    path: "config/.env",
+  });
 }
 // import routes
 const user = require("./controller/user");
